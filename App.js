@@ -31,8 +31,7 @@ const synthetic_expenses = [
 
 //arrow function App
 const App = () => {
-  const [expenses, setExpenses] = useState(synthetic_expenses);
-  const [filteredExpenses, setFilteredExpenses] = useState(synthetic_expenses);
+  const [expenses, setExpenses] = useState(synthetic_expenses);  
 
   //add expense handler
   const AddExpenseHandler = (expense) => {
@@ -44,38 +43,11 @@ const App = () => {
     console.log(expense);
   };
 
-  //filter changed handler
-  const FilterChangedHandler = (selectedYear) => {
-    setFilteredExpenses(expenses.filter(expense => expense.date.getFullYear().toString() === selectedYear));
-
-    console.log('In App.js');
-    console.log(selectedYear);
-  };
-
-  //products array
-  const products = [
-    {
-      id: 'p1',
-      title: 'Product 1',
-      price: 10,
-      description: 'First product',
-    }, {
-      id: 'p2',
-      title: 'Product 2',
-      price: 20,
-      description: 'Second product',
-    },
-  ];
-
   //return
   return (
     <div className="App">
       <NewExpense onAddExpense={AddExpenseHandler} />
-      <Expenses expenses={filteredExpenses}
-        onYearSelected={FilterChangedHandler}
-      />
-      {/* {expenses.map(expense => <ExpenseItem title={expense.title} amount={expense.amount} date={expense.date} />)} */}
-      {/* {products.map(product => <Product title={product.title} price={product.price} description={product.description} />)} */}
+      <Expenses expenses={expenses} />
     </div>
   );
 }
